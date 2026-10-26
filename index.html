@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-visual">
+<title>ことのは｜短歌</title>
+<meta name="description" content="五・七・五・七・七を詠む、竹と水辺の和の短歌あそび「ことのは」。">
+<meta name="theme-color" content="#e8b98a">
+<meta property="og:title" content="ことのは｜短歌">
+<meta property="og:description" content="季語入りの上の句に返す庭園、一首を詠む宮中、盃が流れ去る前に詠む曲水の宴。">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Yuji+Boku&display=swap" rel="stylesheet">
+<style>
+:root{--fs:clamp(14px,min(calc((var(--VH,700px) - 340px)/10),calc((min(100vw,520px) - 140px)/9.4)),30px);--t:#e8b98a;--b:#f8e6c4;--far:#b9805c;--near:#8c4a2e;--ink:#2b2420;--shu:#b5382e;--gold:#d4a937;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden}body{margin:0;font-family:'Yuji Syuku','Hiragino Mincho ProN','Yu Mincho',serif;color:var(--ink);background:var(--b);-webkit-text-size-adjust:100%}
+#bg,#fx,#fx2{position:fixed;inset:0;width:100%;height:var(--H,100%)}
+#bg{z-index:0}#fx{z-index:1;pointer-events:none;opacity:.7}#fx2{z-index:3;pointer-events:none}
+.st0{stop-color:var(--t);transition:stop-color 1.2s}.st1{stop-color:var(--b);transition:stop-color 1.2s}
+.far{fill:var(--far);transition:fill 1.2s}.near{fill:var(--near);transition:fill 1.2s}
+#app{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:18px 16px calc(40px + var(--KB,0px))}
+h1{font-family:'Yuji Boku','Yuji Syuku',serif;font-size:48px;margin:4px 0 0;letter-spacing:.12em;text-align:center;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.5)}
+.sub{text-align:center;margin:2px 0 12px;letter-spacing:.2em;font-size:15px}
+.wash{background:rgba(250,243,226,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.75);box-shadow:0 6px 24px rgba(60,40,20,.18)}
+.me{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:6px;margin-bottom:10px}
+.pick{display:grid;grid-template-columns:repeat(3,52px);gap:8px;margin-left:auto}.nm{font-size:17px;letter-spacing:.12em;margin-top:2px}.who{text-align:center}.ab.big{width:64px;height:64px;cursor:default;margin:0 auto 2px}.pick .ab{width:52px;height:52px}
+.ab{width:52px;height:52px;border-radius:50%;background:#f3ead8;border:2px solid transparent;padding:0;cursor:pointer;overflow:hidden}
+.ab.on{border-color:var(--shu);box-shadow:0 0 0 2px rgba(181,56,46,.25)}
+.ab svg{display:block;width:100%;height:100%}
+.pts{font-size:14px;white-space:nowrap}
+.mode{display:block;width:100%;text-align:left;font:inherit;color:inherit;padding:12px 16px;margin-bottom:10px;border-radius:4px;cursor:pointer}
+.mode b{display:block;font-size:24px;letter-spacing:.15em;font-weight:400}
+.mode span{font-size:14px;line-height:1.6}
+.mode:active{transform:translateY(1px)}
+.row{display:flex;gap:10px}.row .mode{margin:0}
+button:focus-visible,input:focus-visible{outline:3px solid var(--shu);outline-offset:2px}
+.btn,.ghost{font:inherit;font-size:17px;letter-spacing:.3em;padding:11px;border-radius:3px;cursor:pointer;width:100%;margin-top:10px}
+.btn{background:var(--shu);color:#fbf3e2;border:0;box-shadow:0 3px 0 #7d2219}
+.ghost{background:rgba(250,243,226,.55);color:var(--ink);border:1px solid var(--ink);letter-spacing:.15em;font-size:16px}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.bar .ghost{width:auto;margin:0;padding:5px 14px}
+.poet{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.poet .ab{width:46px;height:46px;cursor:default}
+.poet p{margin:0;line-height:1.5}.poet small{font-size:13px}
+#app.qs{padding-right:76px}
+.river{position:fixed;top:var(--VT,0px);height:var(--VH,100%);width:54px;right:max(10px,calc((100vw - 520px)/2 + 10px));background:repeating-linear-gradient(180deg,transparent 0 46px,rgba(255,255,255,.4) 46px 48px),rgba(110,165,180,.36);-webkit-mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);pointer-events:none;z-index:0;animation:rv 7s linear infinite}
+@keyframes rv{to{background-position:0 96px,0 0}}
+.cup{position:fixed;top:var(--VT,0px);right:max(10px,calc((100vw - 520px)/2 + 10px));width:54px;height:54px;z-index:5;pointer-events:none;transform:translateY(-80px)}
+.cup i{display:block;width:44px;height:44px;margin:5px;border-radius:50%;background:radial-gradient(circle,#2b1a16 0 30%,#b5382e 33% 74%,#7d2219 76% 100%);box-shadow:0 5px 8px rgba(30,40,40,.35),0 0 0 5px rgba(255,255,255,.28);animation:sway 4.5s ease-in-out infinite alternate}
+@keyframes sway{from{transform:translateX(-4px) rotate(-12deg)}to{transform:translateX(4px) rotate(12deg)}}
+.fw{position:relative;margin:4px 0 10px;display:flex}.fuda{position:relative;z-index:1;border-radius:3px;padding:14px 16px;margin:0;display:flex;justify-content:center;align-items:center;flex:1;outline:1px solid rgba(61,79,58,.3);outline-offset:-7px;background-image:repeating-linear-gradient(95deg,rgba(150,120,70,.05) 0 2px,transparent 2px 7px)}
+.tate{font-size:var(--fs,27px);display:flex;flex-direction:row-reverse;gap:.45em;align-items:flex-start}
+.tate>div{display:flex;flex-direction:column}
+.c{display:block;width:1.2em;height:1.2em;line-height:1.2em;text-align:center}.c.r{transform:rotate(90deg)}
+.tate .low{padding-top:1.2em;color:#6e2a22}.tate .gap{margin-right:1.2em}
+.fuda.wash{background-color:rgba(250,243,226,.3);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);box-shadow:0 4px 18px rgba(60,40,20,.12)}
+.fuda.wash.done{background-color:rgba(232,238,214,.42);box-shadow:0 6px 22px rgba(50,70,50,.16)}
+.tate{text-shadow:0 0 5px rgba(255,251,238,.95),0 0 12px rgba(255,251,238,.7)}
+.fuda.fresh{animation:soak 3s ease-out both}
+@keyframes soak{0%{background-color:rgba(250,243,226,.3)}100%{background-color:rgba(232,238,214,.42)}}
+.fuda.fresh .low{animation:ink 2.2s ease-out both}
+@keyframes ink{0%{opacity:0;filter:blur(7px)}100%{opacity:1;filter:blur(0)}}
+.rp{position:absolute;left:0;top:15%;width:100%;height:70%;border:1px solid rgba(70,100,80,.55);border-radius:50%;opacity:0;pointer-events:none;animation:rip 3.6s ease-out both}
+@keyframes rip{0%{opacity:.7;transform:scale(.7)}100%{opacity:0;transform:scale(1.7)}}
+.seal{position:absolute;left:12px;bottom:12px;z-index:2;width:34px;height:34px;background:#b5382e;color:#fbf3e2;font-size:20px;display:flex;align-items:center;justify-content:center;border-radius:3px;opacity:.88;transform:rotate(-4deg)}
+.fuda.fresh~.seal{animation:stamp .5s ease-out 2.6s both}
+@keyframes stamp{0%{opacity:0;transform:scale(1.5) rotate(-4deg)}100%{opacity:.88;transform:scale(1) rotate(-4deg)}}
+
+
+.need{margin:0 0 6px;font-size:14px;line-height:1.4;text-align:center}
+.chips{display:flex;gap:8px;justify-content:center;margin-bottom:8px}
+.chip{font:inherit;font-size:15px;padding:2px 12px;border:1px solid var(--ink);background:rgba(250,243,226,.6);border-radius:20px;cursor:pointer}
+
+.in+.in{margin-top:6px}
+.in{width:100%;font:inherit;font-size:20px;padding:9px;border:1px solid rgba(43,36,32,.5);border-radius:3px;background:rgba(255,252,243,.85);color:var(--ink);text-align:center;letter-spacing:.1em}
+#cnt{display:block;text-align:right;font-size:13px;margin:4px 2px 0}
+.bonus{text-align:center;font-size:17px;color:#7d2219;letter-spacing:.06em;margin:6px 0}
+.note{text-align:center;font-size:15px;margin:6px 0}
+.kashu{padding:14px 16px;border-radius:4px;margin-bottom:10px;position:relative;line-height:1.8}
+.kashu .bh{color:#6e2a22;margin-top:14px}
+.kashu{padding-right:48px}.kashu .star{position:absolute;right:8px;top:8px;font:inherit;font-size:26px;background:none;border:0;cursor:pointer;color:var(--gold);padding:6px}
+.kashu small{font-size:12px}
+.tabs{display:flex;gap:6px;margin-bottom:12px}
+.tab{flex:1;font:inherit;font-size:18px;padding:10px 0;border:1px solid var(--ink);background:rgba(250,243,226,.5);cursor:pointer;border-radius:3px}
+.tab.on{background:var(--ink);color:#f6ecd6}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{padding:12px;border-radius:4px}
+.card b{display:block;font-size:30px;font-weight:400;letter-spacing:.1em}
+.card i{font-style:normal;font-size:13px}
+.card p{margin:6px 0 0;font-size:13px;line-height:1.6}
+.empty{text-align:center;padding:30px 10px;line-height:1.8}
+body.kb{--fs:clamp(14px,min(calc((var(--VH,700px) - 250px)/10),calc((min(100vw,520px) - 140px)/9.4)),30px)}body.kb .need,body.kb .chips,body.kb #cnt{display:none}
+body.np{overflow:hidden}
+body.two{--fs:clamp(14px,min(calc((var(--VH,700px) - 400px)/10),calc((min(100vw,520px) - 140px)/9.4)),30px)}
+body.kb.two{--fs:clamp(14px,min(calc((var(--VH,700px) - 305px)/10),calc((min(100vw,520px) - 140px)/9.4)),30px)}
+.msg{margin:4px 0 0;color:#a8322a;text-align:center;font-size:14px}.msg:empty{display:none}
+.tate:empty::before{content:'ここに歌が現れます';writing-mode:vertical-rl;opacity:.35;font-size:.62em;letter-spacing:.2em}
+#app.play{position:fixed;top:var(--VT,0px);left:max(0px,calc((100vw - 520px)/2));width:min(100%,520px);height:var(--VH,100vh);margin:0;padding:calc(env(safe-area-inset-top,0px) + 8px) 14px calc(env(safe-area-inset-bottom,0px) + 8px);display:flex;flex-direction:column;overflow:hidden}
+#app.qs.play{padding-right:76px}
+#app.play>*{flex:none}#app.play>.fw{flex:1 1 0;min-height:0}
+.rowb{display:flex;gap:8px;margin-top:8px}.rowb .btn{flex:2;margin:0;width:auto}.rowb .ghost{flex:1;margin:0;width:auto;letter-spacing:.1em}
+@media (prefers-reduced-motion:reduce){.fuda.fresh,.fuda.fresh .low,.fuda.fresh~.seal{animation:none}.rp{display:none}}
+</style>
+</head>
+<body>
+<svg id="bg" viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop class="st0" offset="0"/><stop class="st1" offset=".75"/></linearGradient><filter id="bl"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<rect width="400" height="800" fill="url(#sky)"/>
+<circle cx="300" cy="170" r="42" fill="#fff6d8" opacity=".7"/>
+<g filter="url(#bl)" fill="#e9c46a" opacity=".5"><rect x="-40" y="250" width="320" height="26" rx="13"/><rect x="150" y="420" width="320" height="30" rx="15"/><rect x="-60" y="560" width="360" height="26" rx="13"/></g>
+<path class="far" d="M0 560 Q60 480 130 540 T260 520 T400 500 V800 H0Z" opacity=".75"/>
+<path class="near" d="M0 660 Q80 590 170 650 T330 630 T400 610 V800 H0Z"/>
+<g fill="#52704c" opacity=".38"><rect x="24" y="0" width="10" height="800"/><rect x="46" y="0" width="6" height="800" opacity=".6"/><rect x="366" y="0" width="10" height="800"/><rect x="348" y="0" width="6" height="800" opacity=".6"/></g>
+<path d="M22 120h14M22 260h14M22 420h14M22 590h14M44 180h10M44 340h10M364 90h14M364 230h14M364 380h14M364 540h14M346 160h10M346 320h10" stroke="#2f4a2f" stroke-width="2" opacity=".4"/>
+</svg>
+<canvas id="fx"></canvas><canvas id="fx2"></canvas>
+<main id="app"></main>
+<script>
+'use strict';
+const $=s=>document.querySelector(s);
+const KEY='miyabi-renga-v1';
+let mem=null;
+function load(){try{const j=localStorage.getItem(KEY);if(j)return JSON.parse(j)}catch(e){}return mem}
+function save(){const d={hist:st.hist,av:st.av,pts:st.pts};mem=d;try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+
+/* ---- データ ---- */
+const V=[
+['春',['花の雨','しずかに庭を','ぬらしけり']],
+['春',['春霞','遠き山辺に','鳥の声']],
+['春',['桜散る','川面に映る','空の色']],
+['夏',['蛍飛ぶ','水辺の闇に','ひをともし']],
+['夏',['夕立の','過ぎゆく空に','虹かかる']],
+['夏',['風鈴の','音にまどろむ','昼下がり']],
+['秋',['月影の','庭にこぼるる','よのふけて']],
+['秋',['虫の音の','細くなりゆく','夜寒かな']],
+['秋',['紅葉散る','山の古寺','鐘の音']],
+['冬',['初雪や','袖にとまりて','消えにけり']],
+['冬',['木枯らしに','揺れる灯火','一つ見ゆ']],
+['冬',['霜の朝','白き息吐き','歩みゆく']],
+['春',['梅が香や','夜明けの庭に','満ちてくる']],['春',['春の夜の','灯のにじみゆく','川の端']],['春',['朧月','袖に淡くも','かかりけり']],['春',['山笑う','麓の道を','子らが行く']],['春',['燕来て','古き軒端に','巣をかける']],['春',['菜の花の','黄色ひろがる','丘の上']],['春',['蝶ひとつ','風にゆだねて','野をわたる']],['春',['雛の間に','灯りともして','夜となり']],
+['夏',['蝉しぐれ','降りやまぬ道','歩きけり']],['夏',['青葉風','縁側に座し','茶を啜る']],['夏',['五月雨の','軒に伝いて','落つる音']],['夏',['夏草の','風にそよげる','野の果てに']],['夏',['打ち水の','乾く間もなく','暮れてゆく']],['夏',['蓮の花','朝の池面に','ひらきけり']],['夏',['涼風や','簾ゆらして','過ぎゆきぬ']],['夏',['時鳥','待つ夜の更けて','空白む']],
+['秋',['名月や','縁の端まで','光さす']],['秋',['萩の花','揺れて雫の','こぼれけり']],['秋',['秋風に','薄の波の','ゆれやまず']],['秋',['雁渡る','夕べの空の','茜色']],['秋',['露の朝','蜘蛛の糸にも','玉光る']],['秋',['鹿の声','遠く聞こゆる','山の宿']],['秋',['菊の香の','ただよう部屋に','墨をする']],['秋',['夕暮れの','稲穂の波の','金色に']],
+['冬',['寒椿','雪をかぶりて','紅の']],['冬',['北風の','窓をたたきて','夜は更ける']],['冬',['火桶抱き','友の便りを','読み返す']],['冬',['枯野行く','旅人ひとり','影ながし']],['冬',['時雨るるや','傘の花咲く','町の角']],['冬',['水仙の','凛と香れる','朝の庭']],['冬',['氷張る','池の面に','月の影']],['冬',['年の瀬の','鐘の音遠く','響きけり']],
+];
+const K={
+春:[['桜','さくら','咲くより散るさまを愛でる、春の花の代表'],['霞','かすみ','春の遠景をおぼろにする靄。秋なら「霧」'],['朧','おぼろ','月や景色のかすむさま。「朧月夜」の和らぎ'],['蝶','ちょう','野に舞う春の使い。はかない夢のたとえにも'],['梅','うめ','春告草。寒さのなか先がけて香る'],['燕','つばめ','南から渡り来て春を告げる鳥'],['雛','ひな','雛祭の人形。子の無事を祈る心'],['春風','はるかぜ','氷を解かす穏やかな風。東風（こち）とも'],['蛙','かわず','古歌では声を愛でた、春の水辺の歌題'],['陽炎','かげろう','春の野に立つゆらめき。はかなさの象徴']],
+夏:[['蛍','ほたる','恋の思いを灯す光。魂のたとえにも'],['風鈴','ふうりん','音で涼を呼ぶ夏の風物'],['夕立','ゆうだち','急に降り過ぎる雨。後の涼を誘う'],['蝉','せみ','短い命を鳴き尽くす声。抜け殻は空蝉（うつせみ）'],['夏草','なつくさ','茂りに茂る野。盛りと寂しさの両面'],['五月雨','さみだれ','梅雨の長雨。もの思いの季節'],['卯の花','うのはな','白く咲く初夏の花。ほととぎすと取り合わせ'],['時鳥','ほととぎす','初音を待ちわびる夏の鳥。歌の定番'],['涼し','すずし','暑さのなかに得る一瞬の心地よさ'],['蓮','はす','泥から咲く清らかな花。極楽を連想']],
+秋:[['月','つき','秋の月は格別。名月・十六夜と呼び分ける'],['紅葉','もみじ','山を染める錦。散る姿も愛でる'],['萩','はぎ','秋の七草の筆頭。しなやかに枝垂れる'],['虫の音','むしのね','松虫・鈴虫など。秋の夜の哀感'],['露','つゆ','朝の草に宿る水玉。命のはかなさ'],['薄','すすき','穂が風に招く野の景。尾花とも'],['鹿','しか','妻を恋う声が秋の寂しさを深める'],['秋風','あきかぜ','身にしみる風。「飽き」と掛けることも'],['雁','かり','北から渡り来る列。旅や便りの象徴'],['夜寒','よさむ','秋の夜に増す寒さ。人恋しさを誘う']],
+冬:[['雪','ゆき','花に見立て、また静寂の象徴として詠む'],['霜','しも','朝の庭を白くする冷え'],['木枯らし','こがらし','葉を払い尽くす冬の初風'],['氷','こおり','張りつめた水。春の「解く」と対'],['枯野','かれの','枯れ果てた野のもの寂びた景'],['水仙','すいせん','雪のなかに香り立つ清楚な花'],['炭','すみ','炭櫃のぬくもり。冬の暮らしの景'],['時雨','しぐれ','通り過ぎる冷たい雨。もののあわれの題'],['鶴','つる','冬の鳥。長寿とめでたさの象徴'],['火桶','ひおけ','手あぶりの火鉢。古雅な冬の暖']]
+};
+K['春'].push(['花の雨','はなのあめ','桜に降るやわらかな春の雨'],['春の夜','はるのよ','短くあたたかな夜。朧と相性がよい'],['山笑う','やまわらう','芽吹きで明るむ春の山を人にたとえる'],['菜の花','なのはな','野を黄色に染める春の花']);
+K['夏'].push(['青葉','あおば','若葉が深まる初夏の緑'],['打ち水','うちみず','庭や道に水を打って涼を呼ぶ暮らしの知恵'],['涼風','すずかぜ','暑さのなかに吹く心地よい風']);
+K['秋'].push(['菊','きく','長寿を祈る秋の花。重陽の節句'],['稲穂','いなほ','黄金に実る稲。豊かな秋の象徴']);
+K['冬'].push(['北風','きたかぜ','冬の厳しい風。木枯らしの仲間'],['年の瀬','としのせ','一年の暮れ。行く年を思う']);
+K['春'].push(['椿','つばき','ぽとりと落ちる花の姿が趣深い'],['菫','すみれ','道端に咲く小さな紫の花'],['蒲公英','たんぽぽ','野に咲く黄の花。綿毛は旅立ち'],['若草','わかくさ','芽吹いたばかりの柔らかな草'],['雲雀','ひばり','空高く囀る春の鳥'],['鶯','うぐいす','春を告げる鳥。初音を待つ'],['花見','はなみ','桜の下で春を祝う宴'],['春雨','はるさめ','しとしと降る暖かな雨'],['土筆','つくし','春の野に顔を出す芽'],['山吹','やまぶき','鮮やかな黄色の花'],['藤','ふじ','垂れて咲く紫の花房'],['桃','もも','三月の節句を彩る花'],['啓蟄','けいちつ','虫が土から出る頃'],['春の海','はるのうみ','のたりと穏やかな海'],['雪解','ゆきげ','雪が解けて水音が満ちる'],['長閑','のどか','のんびり穏やかな春の日']);
+K['夏'].push(['向日葵','ひまわり','真夏の太陽に向かって咲く花'],['朝顔','あさがお','朝にひらく涼しげな花'],['紫陽花','あじさい','梅雨に色づく手毬の花'],['団扇','うちわ','涼をとる夏の道具'],['浴衣','ゆかた','夏祭りの装い'],['花火','はなび','夜空に咲く夏の風物'],['入道雲','にゅうどうぐも','夏空に湧く大きな雲'],['若葉','わかば','初夏のみずみずしい緑'],['新緑','しんりょく','芽吹きの輝く緑'],['金魚','きんぎょ','涼やかに泳ぐ夏の友'],['梅雨','つゆ','長く降り続く雨の季節'],['日傘','ひがさ','夏の日差しを避ける傘'],['清水','しみず','岩間から湧く冷たい水'],['滝','たき','涼を呼ぶ水の落ちる音'],['簾','すだれ','風を通し日を遮る夏のしつらえ'],['夕涼み','ゆうすずみ','日暮れの涼を楽しむひととき']);
+K['秋'].push(['彼岸花','ひがんばな','あぜ道を赤く染める花'],['秋桜','コスモス','風に揺れる秋の花'],['桔梗','ききょう','気品ある青紫の秋の七草'],['女郎花','おみなえし','黄の小花をつける秋の七草'],['柿','かき','朱に色づく秋の実り'],['栗','くり','毬から落ちる秋の味覚'],['月見','つきみ','団子と薄で月を愛でる'],['名月','めいげつ','中秋の澄んだ満月'],['十六夜','いざよい','満月の翌夜、ためらうように昇る月'],['霧','きり','秋の朝に立ち込める白い靄'],['稲妻','いなずま','稲を実らせるとされた光'],['野分','のわき','秋に吹き荒れる強い風'],['鰯雲','いわしぐも','高く広がるうろこ雲'],['蜻蛉','とんぼ','澄んだ空を舞う秋の虫'],['鈴虫','すずむし','りんりんと鳴く秋の虫'],['銀杏','いちょう','黄金に降り積もる葉'],['新米','しんまい','その年に実った初めての米'],['案山子','かかし','田を守る人形']);
+K['冬'].push(['寒椿','かんつばき','冬の寒さに咲く紅い花'],['落葉','らくよう','木々が葉を落とす冬の景'],['寒月','かんげつ','凍てつく夜空の冴えた月'],['霰','あられ','小さな氷の粒が降る'],['霙','みぞれ','雪まじりの冷たい雨'],['吹雪','ふぶき','風に舞い荒れる雪'],['初雪','はつゆき','その冬初めての雪'],['氷柱','つらら','軒から下がる氷の柱'],['冬木立','ふゆこだち','葉を落とした静かな林'],['枯木','かれき','葉を落として佇む木'],['山茶花','さざんか','冬の庭に咲く花'],['蜜柑','みかん','こたつの友の冬の実'],['炬燵','こたつ','冬の暮らしのぬくもり'],['湯豆腐','ゆどうふ','冬の夜のあたたかな一品'],['除夜','じょや','大晦日の夜。除夜の鐘'],['大晦日','おおみそか','一年の最後の日'],['千鳥','ちどり','冬の浜辺を鳴き渡る鳥'],['白鳥','はくちょう','北から渡る白い冬鳥']);
+const TH={春:['#f3d3d9','#fdf1e0','#c8b5c0','#a9c19a'],夏:['#a9d3d6','#f1f0d8','#7fa6a0','#4f7f62'],秋:['#e8b98a','#f8e6c4','#b9805c','#8c4a2e'],冬:['#c9d3dd','#f1f2f2','#9aa7b5','#dfe5ea']};
+const PC={春:['#f6a9bb','#fbd3dc'],夏:['#e8f59a'],秋:['#c9542a','#e29b3a','#a8402a'],冬:['#ffffff']};
+const ML={niwa:'庭園の間',kyutei:'宮中の間',qs:'曲水の宴'};
+const AVS=[{k:'m',c:'#3f5f8a'},{k:'m',c:'#6b4a2e'},{k:'n',c:'#5a4a8a'},{k:'f',c:'#a63d4b'},{k:'h',c:'#c76a8a'},{k:'w',c:'#4f7a5a'}];
+const POETS=[{n:'紫の君',t:'歌姫',k:'f',c:'#7b4a8c'},{n:'在原の翁',t:'歌人',k:'m',c:'#3b5b78'},{n:'西行坊',t:'風流な法師',k:'b',c:'#8a5a2b'},{n:'小町の君',t:'歌姫',k:'f',c:'#b5382e'},{n:'藤の中将',t:'歌人',k:'n',c:'#5a6b3a'},{n:'和泉の君',t:'歌姫',k:'g',c:'#2f6f7a'},{n:'桔梗の御方',t:'歌姫',k:'h',c:'#5a4a9a'},{n:'小夜の更衣',t:'歌姫',k:'g',c:'#8a3a5a'},{n:'壺の尼君',t:'風流な尼君',k:'w',c:'#6a7a4a'},{n:'藤壺の君',t:'歌姫',k:'f',c:'#6b7f3a'}];
+
+/* ---- 人物イラスト ---- */
+function av(k,c){
+ const face='<circle cx="32" cy="25" r="9" fill="#f4dcc0"/><path d="M28 25h2M34 25h2" stroke="#2b2420" stroke-width="1.4" stroke-linecap="round"/>';
+ let back='',top='',body='<path d="M10 64Q13 38 32 34Q51 38 54 64Z" fill="'+c+'"/><path d="M26 34L32 47L38 34" fill="none" stroke="#f4ead6" stroke-width="2"/>';
+ if(k=='m')top='<path d="M25 18Q26 3 33 2Q38 4 39 18Z" fill="#1d1a18"/>';
+ if(k=='f'){back='<path d="M19 24Q19 7 32 7Q45 7 45 24L49 62H15Z" fill="#1d1a18"/>';top='<path d="M23 20Q32 10 41 20Q32 15 23 20Z" fill="#1d1a18"/>';body='<path d="M8 64Q11 38 32 34Q53 38 56 64Z" fill="'+c+'"/><path d="M9 64Q10 56 13 51H51Q54 56 55 64Z" fill="#e8c9a0"/><path d="M10 58H54" stroke="#fff" stroke-width="1" opacity=".5"/>'}
+ if(k=='g'){back='<path d="M21 26Q21 12 32 12Q43 12 43 26L45 50H19Z" fill="#1d1a18"/>';top='<circle cx="32" cy="9" r="6" fill="#1d1a18"/><path d="M23 21Q32 11 41 21Q32 16 23 21Z" fill="#1d1a18"/><path d="M38 7l9-3" stroke="#d4a937" stroke-width="2" stroke-linecap="round"/>';body='<path d="M8 64Q11 38 32 34Q53 38 56 64Z" fill="'+c+'"/><path d="M9 64Q10 56 13 51H51Q54 56 55 64Z" fill="#f0dcc0"/><path d="M26 34L32 47L38 34" fill="none" stroke="#f4ead6" stroke-width="2"/>'}
+ if(k=='h'){back='<path d="M19 24Q19 7 32 7Q45 7 45 24L50 62H14Z" fill="#1d1a18"/>';top='<path d="M23 20Q32 10 41 20Q32 15 23 20Z" fill="#1d1a18"/><circle cx="42" cy="14" r="3.4" fill="#e8708a"/><circle cx="42" cy="14" r="1.3" fill="#fbe9a0"/>';body='<path d="M8 64Q11 38 32 34Q53 38 56 64Z" fill="'+c+'"/><path d="M9 64Q10 56 13 51H51Q54 56 55 64Z" fill="#e8c9a0"/><path d="M10 58H54M12 54H52" stroke="#fff" stroke-width="1" opacity=".5"/><path d="M26 34L32 47L38 34" fill="none" stroke="#f4ead6" stroke-width="2"/>'}
+ if(k=='n'){top='<path d="M38 9Q51 7 50 28" fill="none" stroke="#1d1a18" stroke-width="3" stroke-linecap="round"/><path d="M25 18Q24 4 32 3Q40 4 39 18Z" fill="#1d1a18"/><rect x="25" y="13" width="14" height="2" fill="#d4a937"/>'}
+ if(k=='b'){top='';body='<path d="M10 64Q13 38 32 34Q51 38 54 64Z" fill="'+c+'"/><path d="M20 36L48 64H34Z" fill="#d9a441"/>'}
+ if(k=='w'){back='<path d="M18 22Q18 40 17 62H47Q46 40 46 22Z" fill="#fff" opacity=".55"/>';top='<ellipse cx="32" cy="14" rx="25" ry="6" fill="#d8b878"/><path d="M23 14Q32 1 41 14Z" fill="#c9a45e"/>'}
+ return '<svg viewBox="0 0 64 64" aria-hidden="true">'+back+body+face+top+'</svg>';
+}
+
+/* ---- 状態 ---- */
+const sv=load()||{};
+const st={scr:'home',mode:null,verse:null,poet:null,done:null,fresh:false,chips:[],hist:sv.hist||[],av:(sv.av>=0&&sv.av<AVS.length)?sv.av:0,pts:sv.pts||0,tab:'秋',fav:false};
+const curSeason=()=>{const m=new Date().getMonth()+1;return m>=3&&m<=5?'春':m<=8&&m>=6?'夏':m>=9&&m<=11?'秋':'冬'};
+let season=curSeason();
+function setSeason(s){season=s;const t=TH[s],r=document.documentElement.style;r.setProperty('--t',t[0]);r.setProperty('--b',t[1]);r.setProperty('--far',t[2]);r.setProperty('--near',t[3])}
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const go=s=>{clearTimeout(st.qt);st.run=false;st.miss=false;st.scr=s;if(s=='home'||s=='zukan'||s=='book')setSeason(s=='zukan'?st.tab:curSeason());render();scrollTo(0,0)};
+
+/* ---- 画面 ---- */
+const E=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const tt=l=>[...l].map(c=>`<span class="c${'ー〜～…―'.includes(c)?' r':''}">${E(c)}</span>`).join('');
+const sp=(t,z)=>{t=(t||'').trim();if(!t)return[];const p=t.split(/[\s\u3000、，,]+/).filter(Boolean);if(p.length>1)return p;const o=[],sum=z.reduce((x,y)=>x+y,0);let i=0;for(let n=0;n<z.length&&i<t.length;n++){const L=n==z.length-1?t.length:Math.max(1,Math.round(t.length*z[n]/sum));o.push(t.slice(i,i+L));i+=L}return o.filter(Boolean)};
+const kg=(t,se)=>{const r=Object.entries(K).filter(([x])=>!se||x==se).flatMap(([x,l])=>l.filter(w=>t.includes(w[0])||(w[1].length>2&&t.includes(w[1]))).map(w=>[w[0],w[1],w[2],x]));return r.filter(w=>!r.some(y=>y!==w&&y[0].length>w[0].length&&y[0].includes(w[0])))};
+const PT={niwa:3,kyutei:10,qs:15};
+const inp=(id,ph)=>`<input id="${id}" class="in" maxlength="40" placeholder="${ph}" autocomplete="off" oninput="pv()" onfocus="st.f='${id}'" onkeydown="ek(event,'${id}')">`;
+const SC={
+home(){return `<h1>ことのは</h1><p class="sub">詠もう、五・七・五・七・七</p>
+<div class="me wash"><div class="who"><div class="ab on big">${av(AVS[st.av].k,AVS[st.av].c)}</div><div class="nm">旅の歌人</div><div class="pts">雅 ${st.pts}</div></div><div class="pick">${AVS.map((a,i)=>`<button class="ab ${i==st.av?'on':''}" aria-label="装束${i+1}" onclick="pickAv(${i})">${av(a.k,a.c)}</button>`).join('')}</div></div>
+<button class="mode wash" onclick="start('niwa')"><b>庭園の間</b><span>季語入りの上の句に、七・七を詠んで返す。</span></button>
+<button class="mode wash" onclick="start('kyutei')"><b>宮中の間</b><span>上の句も下の句もあなたが詠む。季語は必須、時間制限なし。</span></button>
+<button class="mode wash" onclick="start('qs')"><b>曲水の宴</b><span>盃が流れ去る前に、季語入りの一首を詠み切れ。</span></button>
+<div class="row"><button class="mode wash" onclick="go('zukan')"><b>季語図録</b><span>四季の言葉と本意</span></button><button class="mode wash" onclick="go('book')"><b>歌集</b><span>${st.hist.length}首を収録</span></button></div>`},
+play(){const m=st.mode,niwa=m=='niwa',q=m=='qs',d=st.done,v=st.verse,me=AVS[st.av],pt=st.poet;
+ const need=niwa?`<p class="need">上の句の季語「${E(st.kw)}」（${v[0]}）に寄せて、七・七を。</p>`:`<p class="need">${q?'盃が流れ去る前に、季語入りの一首を（約90秒）。':'五・七・五・七・七を詠もう。季語は必ず入れて。'}</p><div class="chips">${st.chips.map(w=>`<button class="chip" onclick="ins('${w}')">${w}</button>`).join('')}</div>`;
+ const A=d?d.song.a:(niwa?v[1]:[]),B=d?d.song.b:[];
+ const lines=A.map(l=>`<div>${tt(l)}</div>`).join('')+B.map((l,i)=>`<div class="low${i?'':' gap'}" style="animation-delay:${.8+i*.7}s">${tt(l)}</div>`).join('');
+ const rings=d&&st.fresh?'<i class="rp"></i><i class="rp" style="animation-delay:.9s"></i><i class="rp" style="animation-delay:1.8s"></i>'+(niwa?'':'<i class="rp" style="animation-delay:2.7s"></i>'):'';
+ const card=`<div class="fw">${rings}<div class="fuda wash ${d?'done'+(st.fresh?' fresh':''):''}" id="fuda"><div class="tate">${lines}</div></div>${d?`<div class="seal">${niwa?'詠':'雅'}</div>`:''}</div>`;
+ let low;
+ if(q&&!d&&!st.run)low=need+(st.miss?'<p class="note">盃は流れ去ってしまいました…</p>':'')+'<button class="btn" onclick="flow()">盃を流す</button>';
+ else if(!d)low=need+(niwa?'':inp('in1','上の句（五・七・五）'))+inp('in2','下の句（七・七）')+'<p class="msg" id="msg"></p><span id="cnt"></span><button class="btn" onclick="cast()">詠む</button>';
+ else{const f=d.song.fav,kw=d.found.map(w=>w[0]).slice(0,3).join('・');low=`<p class="bonus">${niwa?'上の句の季語':'季語'}「${E(kw)}」　雅 ＋${d.pts}</p><div class="rowb"><button class="btn" onclick="start('${m}')">次の歌へ</button><button class="ghost" onclick="fav(${d.song.id})">${f?'★ しおり済':'☆ しおり'}</button></div>`}
+ const who=niwa?`<div class="poet"><div class="ab">${av(pt.k,pt.c)}</div><p>${pt.n}<small>（${pt.t}）</small><br><small>が上の句を詠みました</small></p></div>`:`<div class="poet"><div class="ab">${av(me.k,me.c)}</div><p>旅の歌人<br><small>${q?'盃が流れる間に詠む':'ゆっくり一首を詠む'}</small></p></div>`;
+ return `<div class="bar"><button class="ghost" onclick="go('home')">戻る</button><span>${ML[m]}</span></div>
+ ${who}${card}${low}${q?'<div class="river"></div>':''}${q&&st.run&&!d?'<div class="cup"><i></i></div>':''}`},
+book(){const l=st.hist.filter(h=>!st.fav||h.fav);
+ return `<div class="bar"><button class="ghost" onclick="go('home')">戻る</button><button class="ghost" onclick="st.fav=!st.fav;render()">${st.fav?'すべて':'しおりのみ'}</button></div>
+ <p class="note">歌集　${st.hist.length}首（しおり以外は最新50首まで）</p>`+(l.length?l.map(h=>`<div class="kashu wash"><div>${h.a.map(E).join('<br>')}</div><div class="bh">${h.b.map(E).join('<br>')}</div><small>${ML[h.mode]||'庭園の間'}${h.k?'　季語「'+E(h.k)+'」':''}</small><button class="star" aria-label="しおり" onclick="fav(${h.id})">${h.fav?'★':'☆'}</button></div>`).join(''):`<div class="empty wash">まだ歌がありません。<br>庭園の間で一首詠んでみましょう。</div>`)},
+zukan(){return `<div class="bar"><button class="ghost" onclick="go('home')">戻る</button><span>季語図録</span></div>
+<div class="tabs">${['春','夏','秋','冬'].map(s=>`<button class="tab ${s==st.tab?'on':''}" onclick="st.tab='${s}';setSeason('${s}');render()">${s}</button>`).join('')}</div>
+<div class="cards">${K[st.tab].map(k=>`<div class="card wash"><b>${k[0]}</b><i>${k[1]}</i><p>${k[2]}</p></div>`).join('')}</div>`}
+};
+function render(){const a=$('#app'),p=st.scr=='play';a.className=(p?'play':'')+(p&&st.mode=='qs'?' qs':'');document.body.classList.toggle('np',p);document.body.classList.toggle('two',p&&st.mode!='niwa');a.innerHTML=SC[st.scr]();if($('#in2'))pv()}
+
+/* ---- 操作 ---- */
+function pickAv(i){st.av=i;save();render()}
+const QT=90000;
+function flow(){st.t0=performance.now();st.run=true;st.miss=false;render();const i=$('#in1')||$('#in2');if(i)i.focus();clearTimeout(st.qt);st.qt=setTimeout(()=>{if(st.mode=='qs'&&st.scr=='play'&&st.run&&!st.done){st.run=false;st.miss=true;render()}},QT)}
+function start(mode){
+ st.mode=mode;st.done=null;st.fresh=false;clearTimeout(st.qt);st.run=false;st.miss=false;st.f=null;
+ if(mode=='niwa'){st.verse=rnd(V.filter(v=>v!==st.verse));st.poet=rnd(POETS);const f=kg(st.verse[1].join(''),st.verse[0]);st.kw=f[0]?f[0][0]:'';setSeason(st.verse[0]);st.chips=[]}
+ else{st.verse=null;setSeason(curSeason());st.chips=[...K[curSeason()]].sort(()=>Math.random()-.5).slice(0,3).map(k=>k[0])}
+ st.scr='play';render();scrollTo(0,0)}
+function pv(){const t=$('.tate'),i2=$('#in2');if(!t||!i2)return;const niwa=st.mode=='niwa',i1=$('#in1');
+ const a=niwa?st.verse[1]:sp(i1?i1.value:'',[5,7,5]),b=sp(i2.value,[7,7]);
+ t.innerHTML=a.map(l=>`<div>${tt(l)}</div>`).join('')+b.map((l,i)=>`<div class="low${i?'':' gap'}">${tt(l)}</div>`).join('');
+ const n=x=>x?x.value.replace(/\s/g,'').length:0,c=$('#cnt');if(c)c.textContent=(niwa?'':'上の句 '+n(i1)+'字（17）　')+'下の句 '+n(i2)+'字（14）';
+ const m=$('#msg');if(m)m.textContent=''}
+function ins(w){const i=$('#'+(st.f||'in2'))||$('#in2');if(!i)return;i.value+=w;i.focus();pv()}
+function ek(e,id){if(e.key!='Enter'||e.isComposing||e.keyCode==229)return;if(id=='in1')$('#in2').focus();else cast()}
+function cast(){
+ const m=st.mode,niwa=m=='niwa',say=t=>{const e=$('#msg');if(e)e.textContent=t};
+ let a;
+ if(niwa)a=st.verse[1];else{const t1=$('#in1').value.trim();if(!t1){say('上の句を入れてください');$('#in1').focus();return}a=sp(t1,[5,7,5])}
+ const t2=$('#in2').value.trim();if(!t2){say('下の句を入れてください');$('#in2').focus();return}
+ const b=sp(t2,[7,7]);let found;
+ if(niwa)found=kg(a.join(''),st.verse[0]);
+ else{found=kg(a.join('')+b.join(''));if(!found.length){say('季語が見当たりません。図録で探してみましょう。');return}}
+ clearTimeout(st.qt);
+ const pts=PT[m],se=niwa?st.verse[0]:found[0][3];
+ const song={id:Date.now(),a,b,mode:m,s:se,k:found[0]?found[0][0]:'',fav:false};
+ st.hist.unshift(song);trim();st.pts+=pts;save();
+ st.done={song,found,pts};setSeason(se);st.fresh=true;render();
+ const r=$('#fuda').getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,niwa?1:2);
+ st.fresh=false}
+function trim(){let n=st.hist.filter(h=>!h.fav).length;while(n>50){let i=st.hist.length-1;while(i>=0&&st.hist[i].fav)i--;if(i<0)break;st.hist.splice(i,1);n--}}
+function fav(id){const h=st.hist.find(x=>x.id==id);if(h){h.fav=!h.fav;save();render()}}
+
+
+/* ---- 舞う粒子 ---- */
+const cv=$('#fx'),cx=cv.getContext('2d'),cv2=$('#fx2'),cx2=cv2.getContext('2d'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let W,H,P=[],G=[],WS=[];
+let W0=0,H0=0,lVH=-1,lVT=-1;
+function fit(){const w=innerWidth,h=innerHeight;if(w!==W0){W0=w;H0=h}else if(h>H0)H0=h;document.documentElement.style.setProperty('--H',H0+'px')}
+function adj(){const i=document.activeElement;if(!i||i.tagName!='INPUT')return;const v=window.visualViewport,b=v?v.offsetTop+v.height:innerHeight,r=i.getBoundingClientRect();if(r.bottom+80>b)scrollBy({top:r.bottom+80-b,behavior:'smooth'})}
+function vp(){const v=window.visualViewport,VH=v?v.height:innerHeight,VT=v?v.offsetTop:0;
+ if(VH!==lVH||VT!==lVT){lVH=VH;lVT=VT;const r=document.documentElement.style;r.setProperty('--VH',VH+'px');r.setProperty('--VT',VT+'px');r.setProperty('--KB',Math.max(0,innerHeight-VH-VT)+'px');const ai=document.activeElement,kb=H0-VH>120&&!!ai&&/^in[12]$/.test(ai.id);if(kb!==document.body.classList.contains('kb')){document.body.classList.toggle('kb',kb);if(kb)setTimeout(adj,300)}}
+ const c=document.querySelector('.cup');if(c)c.style.transform='translateY('+(-70+Math.min(1,(performance.now()-st.t0)/QT)*(VH+90))+'px)'}
+function rs(){fit();const d=Math.min(devicePixelRatio||1,2);W=W0;H=H0;for(const [c,x] of [[cv,cx],[cv2,cx2]]){c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}}
+const mk=y=>({x:Math.random()*W,y:y??Math.random()*H,vx:.3+Math.random()*.8,vy:.4+Math.random()*.8,r:3+Math.random()*4,a:Math.random()*6,va:(Math.random()-.5)*.05,ph:Math.random()*6});
+function init(){rs();P=Array.from({length:RM?5:14},()=>mk());WS=Array.from({length:RM?0:2},()=>({x:Math.random()*W,y:Math.random()*H,l:90+Math.random()*120,s:1.2+Math.random()*1.2}))}
+function burst(x,y,m){const n=RM?0:Math.round(12*m),col=['#5f8a5a','#7da06a','#4c7350','#8fae6e'];
+ for(let i=0;i<n;i++)G.push({x:Math.random()*W,y:-20-Math.random()*H*.5,vx:(Math.random()-.3)*.6,vy:.7+Math.random()*.9,a:Math.random()*6.28,va:(Math.random()-.5)*.03,len:10+Math.random()*8,ph:Math.random()*6,life:1,c:rnd(col)})}
+function loop(){vp();
+ cx.clearRect(0,0,W,H);const cs=PC[season];
+ cx.strokeStyle='rgba(255,255,255,.22)';cx.lineWidth=1.2;
+ for(const w of WS){w.x+=w.s;if(w.x-w.l>W){w.x=-20;w.y=Math.random()*H}cx.beginPath();cx.moveTo(w.x-w.l,w.y);cx.bezierCurveTo(w.x-w.l*.6,w.y-14,w.x-w.l*.3,w.y+14,w.x,w.y-4);cx.stroke()}
+ P.forEach((p,i)=>{p.ph+=.02;p.x+=p.vx+Math.sin(p.ph)*.5;p.y+=season=='夏'?Math.sin(p.ph)*.4:p.vy;p.a+=p.va;
+  if(p.x>W+10||p.y>H+10){P[i]=mk(-10);P[i].x=Math.random()*W*.9}
+  cx.fillStyle=cs[i%cs.length];cx.save();cx.translate(p.x,p.y);
+  if(season=='夏'){cx.globalAlpha=.4+.5*Math.sin(p.ph*2);cx.shadowColor='#e8f59a';cx.shadowBlur=12;cx.beginPath();cx.arc(0,0,2.5,0,6.3);cx.fill()}
+  else if(season=='冬'){cx.globalAlpha=.85;cx.beginPath();cx.arc(0,0,p.r*.6,0,6.3);cx.fill()}
+  else{cx.globalAlpha=.55;cx.rotate(p.a);cx.beginPath();cx.ellipse(0,0,p.r,p.r*.55,0,0,6.3);cx.fill()}
+  cx.restore()});
+ cx2.clearRect(0,0,W,H);for(let i=G.length-1;i>=0;i--){const g=G[i];g.ph+=.02;g.x+=g.vx+Math.sin(g.ph)*.6;g.y+=g.vy;g.a+=g.va;if(g.y>0)g.life-=.003;if(g.life<=0||g.y>H+30){G.splice(i,1);continue}
+  cx2.save();cx2.globalAlpha=Math.min(1,g.life*1.2)*.8;cx2.translate(g.x,g.y);cx2.rotate(g.a+Math.sin(g.ph)*.5);cx2.fillStyle=g.c;cx2.beginPath();cx2.moveTo(-g.len,0);cx2.quadraticCurveTo(0,-g.len*.32,g.len,0);cx2.quadraticCurveTo(0,g.len*.2,-g.len,0);cx2.fill();cx2.restore()}
+ requestAnimationFrame(loop)}
+
+addEventListener('resize',()=>{const a=W0,b=H0;fit();if(W0!==a||H0!==b)rs()});
+setSeason(season);init();render();loop();
+</script>
+</body>
+</html>
